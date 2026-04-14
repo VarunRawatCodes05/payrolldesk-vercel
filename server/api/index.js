@@ -1,18 +1,16 @@
 const app = require('../server');
 const sequelize = require('../config/database');
-const { setupAssociations } = require('../models');
 
-// Initialize DB once on cold start
+// Initialize DB once on cold start — associations already set up in server.js
 let initialized = false;
 
 const init = async () => {
   if (initialized) return;
   try {
-    setupAssociations();
     await sequelize.authenticate();
     await sequelize.sync();
     initialized = true;
-    console.log('DB initialized');
+    console.log('DB initialized successfully');
   } catch (err) {
     console.error('DB init error:', err.message);
   }
