@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Employee Experience - Payroll History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ff51fa",
+                        "on-secondary-fixed-variant": "#920091",
+                        "on-primary-fixed-variant": "#006262",
+                        "tertiary-fixed-dim": "#9b98ff",
+                        "tertiary-container": "#6760fd",
+                        "surface-tint": "#c1fffe",
+                        "on-tertiary-fixed-variant": "#2300bf",
+                        "surface-bright": "#1f2b49",
+                        "secondary-dim": "#ff51fa",
+                        "surface": "#060e20",
+                        "surface-container-highest": "#192540",
+                        "on-primary-fixed": "#004343",
+                        "tertiary-fixed": "#aaa8ff",
+                        "background": "#060e20",
+                        "on-primary": "#006767",
+                        "primary-dim": "#00e6e6",
+                        "on-tertiary": "#120076",
+                        "surface-variant": "#192540",
+                        "on-surface": "#dee5ff",
+                        "outline-variant": "#40485d",
+                        "inverse-surface": "#faf8ff",
+                        "secondary-fixed": "#ffbdf3",
+                        "surface-dim": "#060e20",
+                        "on-background": "#dee5ff",
+                        "inverse-primary": "#006a6a",
+                        "surface-container-high": "#141f38",
+                        "secondary-fixed-dim": "#ffa6f3",
+                        "on-error": "#490006",
+                        "on-secondary": "#400040",
+                        "surface-container-lowest": "#000000",
+                        "surface-container": "#0f1930",
+                        "primary-fixed": "#00f5f5",
+                        "on-error-container": "#ffa8a3",
+                        "inverse-on-surface": "#4d556b",
+                        "outline": "#6d758c",
+                        "error-container": "#9f0519",
+                        "on-surface-variant": "#a3aac4",
+                        "on-secondary-fixed": "#620061",
+                        "primary-fixed-dim": "#00e6e6",
+                        "error-dim": "#d7383b",
+                        "surface-container-low": "#091328",
+                        "tertiary-dim": "#645efb",
+                        "error": "#ff716c",
+                        "on-primary-container": "#005d5d",
+                        "on-secondary-container": "#fff5f9",
+                        "on-tertiary-container": "#000000",
+                        "primary": "#c1fffe",
+                        "on-tertiary-fixed": "#0c005f",
+                        "secondary-container": "#a900a9",
+                        "tertiary": "#9492ff",
+                        "primary-container": "#00ffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-glass {
+            background: rgba(15, 25, 48, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .pulse-glow {
+            box-shadow: 0 0 20px rgba(193, 255, 254, 0.1);
+        }
+        .refractive-edge {
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        body {
+            background-color: #060e20;
+            color: #dee5ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary/30 min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-900/40 backdrop-blur-xl flex items-center justify-between px-6 py-4 max-w-full shadow-cyan-500/10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional man in a modern office setting with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApk0L-_AhEXTkFRMaexg--nVasA38EEl1s2eL6p6PyluPZsUatUMuTbvDj5RQFTtkPzeLcyzaJ-mUAR6Hag3ABDQtUPAVacymdMm007mzm85RgeOVmIkCL4yOPVENKeJabojeONd9yVEqAkd-Df6Kuhdmkbj2s3dfxrcJglRFGyHaK1JHyN56WU9ST_0F967UigocP0MoOiCKd2nby3w-GllLhYSj6isnpiv-XubwH8YN6G4c5tTX3hJIwfrYAk-i9YJ1Zue6b5WY"/>
+</div>
+<h1 class="font-headline text-lg font-semibold tracking-tight text-cyan-400">Employee Experience</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-cyan-400 font-medium" href="#">Home</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Pulse</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Growth</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">People</a>
+</nav>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-all text-slate-400">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-28 px-6 max-w-7xl mx-auto space-y-12">
+<!-- Hero Section: Stats & Greeting -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+<div class="lg:col-span-7 space-y-4">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                    Your financial <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">artifacts.</span>
+</h2>
+<p class="text-on-surface-variant max-w-md text-lg">
+                    Comprehensive overview of your earnings, tax distributions, and transaction history for the current fiscal year.
+                </p>
+</div>
+<div class="lg:col-span-5 flex flex-col md:flex-row gap-4">
+<div class="flex-1 bg-surface-container-low p-6 rounded-xl border border-white/5 refractive-edge">
+<p class="text-on-surface-variant text-sm font-label uppercase tracking-widest mb-2">Annual Total</p>
+<div class="text-3xl font-headline font-bold text-white">$142,800.00</div>
+<div class="mt-4 flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-semibold">+4.2% from LY</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-low p-6 rounded-xl border border-white/5 refractive-edge">
+<p class="text-on-surface-variant text-sm font-label uppercase tracking-widest mb-2">Tax Distributed</p>
+<div class="text-3xl font-headline font-bold text-white">$31,416.00</div>
+<div class="mt-4 flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+<span class="text-xs font-semibold">Fully Compliant</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Immersive Document Viewer -->
+<section class="space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline text-2xl font-bold">Recent Payslips</h3>
+<button class="text-primary font-semibold flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    View Archive <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Document Card 1 -->
+<div class="liquid-glass p-8 rounded-xl refractive-edge border border-white/10 group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex justify-between mb-8">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+<div class="space-y-1 mb-6">
+<h4 class="font-headline text-xl font-bold text-white">October 2023</h4>
+<p class="text-on-surface-variant">Payment ID: #PAY-99210</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-1">Net Total</p>
+<p class="text-2xl font-headline font-bold text-white">$9,400.00</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold border border-secondary/20">Verified</span>
+</div>
+</div>
+<!-- Document Card 2 -->
+<div class="liquid-glass p-8 rounded-xl refractive-edge border border-white/10 group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex justify-between mb-8">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+<div class="space-y-1 mb-6">
+<h4 class="font-headline text-xl font-bold text-white">September 2023</h4>
+<p class="text-on-surface-variant">Payment ID: #PAY-98114</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-1">Net Total</p>
+<p class="text-2xl font-headline font-bold text-white">$9,400.00</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold border border-secondary/20">Verified</span>
+</div>
+</div>
+<!-- Document Card 3 -->
+<div class="liquid-glass p-8 rounded-xl refractive-edge border border-white/10 group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex justify-between mb-8">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+<div class="space-y-1 mb-6">
+<h4 class="font-headline text-xl font-bold text-white">August 2023</h4>
+<p class="text-on-surface-variant">Payment ID: #PAY-97052</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-1">Net Total</p>
+<p class="text-2xl font-headline font-bold text-white">$9,150.00</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold border border-secondary/20">Verified</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Details & Transactions -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12">
+<!-- Transaction List -->
+<div class="lg:col-span-8 bg-surface-container p-8 rounded-xl border border-white/5 refractive-edge">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline text-xl font-bold">Transaction History</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded-full bg-white/5 text-on-surface-variant text-xs font-semibold">Income</span>
+<span class="px-3 py-1 rounded-full bg-white/5 text-on-surface-variant text-xs font-semibold">Bonuses</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Transaction Item -->
+<div class="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-bold text-white">Monthly Base Salary</p>
+<p class="text-sm text-on-surface-variant">Oct 31, 2023 • Bank Transfer</p>
+</div>
+</div>
+<div class="text-right flex items-center gap-6">
+<div>
+<p class="font-headline font-bold text-white">$9,400.00</p>
+<p class="text-xs text-secondary font-bold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[10px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Verified
+                                </p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<p class="font-bold text-white">Quarterly Performance Bonus</p>
+<p class="text-sm text-on-surface-variant">Oct 15, 2023 • Direct Deposit</p>
+</div>
+</div>
+<div class="text-right flex items-center gap-6">
+<div>
+<p class="font-headline font-bold text-white">$2,500.00</p>
+<p class="text-xs text-secondary font-bold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[10px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Verified
+                                </p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-bold text-white">Monthly Base Salary</p>
+<p class="text-sm text-on-surface-variant">Sep 30, 2023 • Bank Transfer</p>
+</div>
+</div>
+<div class="text-right flex items-center gap-6">
+<div>
+<p class="font-headline font-bold text-white">$9,400.00</p>
+<p class="text-xs text-secondary font-bold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[10px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Verified
+                                </p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Card: Support/Actions -->
+<div class="lg:col-span-4 space-y-8">
+<div class="bg-gradient-to-br from-tertiary-container/30 to-surface-container-highest p-8 rounded-xl border border-tertiary-container/20">
+<h3 class="font-headline text-xl font-bold text-white mb-4">Financial Insight</h3>
+<p class="text-on-surface-variant mb-6">Your salary has increased by <span class="text-primary font-bold">12%</span> in the last 12 months. Keep up the great work!</p>
+<div class="h-32 w-full rounded-lg bg-surface-container-lowest flex items-end gap-1 px-4 py-2 overflow-hidden">
+<div class="flex-1 bg-primary/20 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[50%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[65%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-full rounded-t-sm"></div>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-xl border border-white/5 space-y-4">
+<h4 class="font-headline font-bold text-white">Need assistance?</h4>
+<p class="text-sm text-on-surface-variant">Connect with our payroll specialists for any discrepancies or tax inquiries.</p>
+<button class="w-full bg-primary text-on-primary font-bold py-3 rounded-full hover:bg-primary-fixed transition-all flex items-center justify-center gap-2 group">
+                        Contact Support
+                        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform" data-icon="support_agent">support_agent</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-4 pb-8 bg-slate-900/60 backdrop-blur-2xl rounded-t-[3rem] z-50 shadow-[0_-10px_40px_rgba(6,14,32,0.8)] border-none">
+<a class="flex flex-col items-center justify-center text-slate-400 opacity-70 hover:text-cyan-200 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-manrope text-[10px] uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-magenta-400 scale-110 relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-magenta-400 after:rounded-full after:shadow-[0_0_8px_#ff51fa]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="sensors">sensors</span>
+<span class="font-manrope text-[10px] uppercase tracking-widest">Pulse</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 opacity-70 hover:text-cyan-200 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="trending_up">trending_up</span>
+<span class="font-manrope text-[10px] uppercase tracking-widest">Growth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 opacity-70 hover:text-cyan-200 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="groups">groups</span>
+<span class="font-manrope text-[10px] uppercase tracking-widest">People</span>
+</a>
+</nav>
+<!-- FAB (Suppressed based on context, but logic check: Home/Dashboard usually has it, Payroll History usually does not) -->
+</body></html>

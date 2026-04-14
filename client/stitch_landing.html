@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PayrollDesk | The Empathic Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=Manrope:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#060e20",
+                      "on-tertiary-fixed-variant": "#2300bf",
+                      "primary": "#c1fffe",
+                      "error-dim": "#d7383b",
+                      "on-tertiary": "#120076",
+                      "surface-tint": "#c1fffe",
+                      "tertiary-container": "#6760fd",
+                      "on-background": "#dee5ff",
+                      "on-error-container": "#ffa8a3",
+                      "on-surface-variant": "#a3aac4",
+                      "error": "#ff716c",
+                      "on-primary-fixed-variant": "#006262",
+                      "surface-variant": "#192540",
+                      "on-primary-fixed": "#004343",
+                      "outline": "#6d758c",
+                      "on-error": "#490006",
+                      "inverse-primary": "#006a6a",
+                      "secondary": "#ff51fa",
+                      "inverse-surface": "#faf8ff",
+                      "error-container": "#9f0519",
+                      "secondary-fixed": "#ffbdf3",
+                      "tertiary-fixed-dim": "#9b98ff",
+                      "on-secondary-fixed-variant": "#920091",
+                      "tertiary": "#9492ff",
+                      "secondary-dim": "#ff51fa",
+                      "primary-container": "#00ffff",
+                      "on-tertiary-fixed": "#0c005f",
+                      "on-tertiary-container": "#000000",
+                      "primary-fixed-dim": "#00e6e6",
+                      "on-secondary-fixed": "#620061",
+                      "background": "#060e20",
+                      "on-secondary": "#400040",
+                      "on-secondary-container": "#fff5f9",
+                      "surface-container-lowest": "#000000",
+                      "on-surface": "#dee5ff",
+                      "primary-fixed": "#00f5f5",
+                      "on-primary": "#006767",
+                      "surface-bright": "#1f2b49",
+                      "secondary-container": "#a900a9",
+                      "primary-dim": "#00e6e6",
+                      "on-primary-container": "#005d5d",
+                      "surface-dim": "#060e20",
+                      "inverse-on-surface": "#4d556b",
+                      "secondary-fixed-dim": "#ffa6f3",
+                      "surface-container-low": "#091328",
+                      "surface-container-high": "#141f38",
+                      "surface-container": "#0f1930",
+                      "outline-variant": "#40485d",
+                      "tertiary-fixed": "#aaa8ff",
+                      "tertiary-dim": "#645efb",
+                      "surface-container-highest": "#192540"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-glow {
+            box-shadow: 0 0 20px rgba(193, 255, 254, 0.3);
+        }
+        .glass-card {
+            background: rgba(25, 37, 64, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(64, 72, 93, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="bg-cyan-950/40 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_8px_32px_0_rgba(6,14,32,0.3)]">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-cyan-400 text-3xl" data-icon="payments">payments</span>
+<span class="font-headline text-2xl font-black text-cyan-50 dark:text-cyan-50 tracking-tight">PayrollDesk</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-cyan-400 font-bold transition-all hover:scale-105 font-headline" href="#">Product</a>
+<a class="text-slate-400 hover:bg-cyan-400/10 hover:scale-105 transition-all px-3 py-1 rounded-full font-headline" href="#">Features</a>
+<a class="text-slate-400 hover:bg-cyan-400/10 hover:scale-105 transition-all px-3 py-1 rounded-full font-headline" href="#">Security</a>
+<a class="text-slate-400 hover:bg-cyan-400/10 hover:scale-105 transition-all px-3 py-1 rounded-full font-headline" href="#">Privacy Policy</a>
+</nav>
+<button class="bg-primary text-on-primary-container px-6 py-2 rounded-full font-bold hover:scale-105 transition-all shadow-[0_0_20px_rgba(193,255,254,0.4)]">
+                Get Started
+            </button>
+</div>
+</header>
+<main class="pt-24 overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[795px] flex flex-col justify-center px-6 lg:px-12 max-w-7xl mx-auto">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<h1 class="font-headline text-5xl lg:text-7xl font-extrabold tracking-tighter mb-6 leading-none">
+                        Smart <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Payroll</span>
+</h1>
+<p class="text-on-surface-variant text-xl max-w-xl mb-10 leading-relaxed">
+                        Experience the Empathic Engine. We've turned complex compliance into a living, tactile journey for your team.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary font-bold px-8 py-4 rounded-full pulse-glow hover:scale-105 transition-transform active:scale-95 flex items-center gap-2">
+                            Access Dashboard
+                            <span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</button>
+<button class="bg-surface-bright/20 backdrop-blur-md border border-outline-variant/30 text-primary font-bold px-8 py-4 rounded-full hover:bg-surface-bright/40 transition-all active:scale-95">
+                            View Demo
+                        </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/20 via-secondary/20 to-transparent blur-3xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
+<div class="relative glass-card rounded-xl overflow-hidden aspect-square flex items-center justify-center p-8">
+<img alt="Refractive financial data flow" class="w-full h-full object-cover rounded-lg" data-alt="Abstract 3D render of liquid glass refractive shapes flowing like financial data with cyan and magenta neon glowing edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSOJBeSxVDcR9St7YVILZetaiVqMCuvY9DMqh4J0i4KdPQi10AUvVCCRTj4WGHISp5pkmFSs0UTshxQyL08IYwyIjh3rpKPNYIATNgVeeqazwnr7fA9upr_sI0TUyeWMjyzUfX2Tzw-YXjXnrqwPJvg418xP2Qj7aq0n3WxwqDjsHCnIp3Gw1jRCcCFw4yZ9sIwbqNU2UItNgkvlNKJtO4RYqCacNeZNaQ_n92K6P3OQiyTjlGEtFXuzGYzcL_wL6xpsxJ0azPqK0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-40"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div class="max-w-2xl">
+<h2 class="font-headline text-4xl lg:text-5xl font-bold mb-4">The Pulse of Your Workforce</h2>
+<p class="text-on-surface-variant text-lg">Managing people should feel physical, responsive, and effortless.</p>
+</div>
+<div class="hidden md:block">
+<span class="text-secondary font-headline font-bold flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary pulse-glow animate-pulse"></span>
+                        LIVE SYSTEM
+                    </span>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Automated Payroll -->
+<div class="glass-card p-10 rounded-xl hover:translate-y-[-8px] transition-transform flex flex-col h-full">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="sync">sync</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Automated Payroll</h3>
+<p class="text-on-surface-variant flex-grow">Real-time global sync. Our engine processes calculations instantly, ensuring accuracy across every border and timezone.</p>
+<div class="mt-8 pt-6 border-t border-outline-variant/10">
+<span class="text-primary font-bold flex items-center gap-2 cursor-pointer group">
+                            Learn more <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Leave Management -->
+<div class="glass-card p-10 rounded-xl hover:translate-y-[-8px] transition-transform flex flex-col h-full">
+<div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="calendar_month">calendar_month</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Leave Management</h3>
+<p class="text-on-surface-variant flex-grow">Intuitive request and track flow. Empower your team with a calendar that breathes with their personal lives.</p>
+<div class="mt-8 pt-6 border-t border-outline-variant/10">
+<span class="text-secondary font-bold flex items-center gap-2 cursor-pointer group">
+                            Learn more <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Employee Self-Service -->
+<div class="glass-card p-10 rounded-xl hover:translate-y-[-8px] transition-transform flex flex-col h-full">
+<div class="w-16 h-16 rounded-full bg-tertiary-container/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="person_play">person_play</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Employee Self-Service</h3>
+<p class="text-on-surface-variant flex-grow">Empowerment via tactile modules. Your team deserves a portal that feels like a premium consumer app, not corporate sludge.</p>
+<div class="mt-8 pt-6 border-t border-outline-variant/10">
+<span class="text-tertiary font-bold flex items-center gap-2 cursor-pointer group">
+                            Learn more <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof Section -->
+<section class="py-32 relative overflow-hidden">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="px-6 lg:px-12 max-w-5xl mx-auto text-center relative z-10">
+<h2 class="font-headline text-4xl lg:text-6xl font-extrabold mb-8 tracking-tight">Ready to Energize your Workflow?</h2>
+<p class="text-on-surface-variant text-xl mb-12 max-w-2xl mx-auto">
+                    Join over 500 companies who have traded spreadsheets for a living, breathing ecosystem of human productivity.
+                </p>
+<button class="bg-primary text-on-primary px-12 py-5 rounded-full font-headline font-bold text-lg pulse-glow hover:scale-110 transition-all active:scale-95 shadow-[0_0_30px_rgba(193,255,254,0.2)]">
+                    Start the Transformation
+                </button>
+<div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-50 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center justify-center gap-2 font-headline font-bold text-xl"><span class="material-symbols-outlined" data-icon="verified">verified</span> LOGO_A</div>
+<div class="flex items-center justify-center gap-2 font-headline font-bold text-xl"><span class="material-symbols-outlined" data-icon="token">token</span> LOGO_B</div>
+<div class="flex items-center justify-center gap-2 font-headline font-bold text-xl"><span class="material-symbols-outlined" data-icon="architecture">architecture</span> LOGO_C</div>
+<div class="flex items-center justify-center gap-2 font-headline font-bold text-xl"><span class="material-symbols-outlined" data-icon="deployed_code">deployed_code</span> LOGO_D</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[3rem] mt-20 bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-cyan-400" data-icon="payments">payments</span>
+<span class="font-plus-jakarta-sans font-bold text-cyan-400 text-xl">PayrollDesk</span>
+</div>
+<p class="text-slate-500 font-manrope text-sm max-w-[240px]">
+                    © 2024 PayrollDesk. The Empathic Engine.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-12 text-sm font-manrope">
+<a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Product</a>
+<a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Features</a>
+<a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Security</a>
+<a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="mt-8 md:mt-0 flex gap-4">
+<div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
