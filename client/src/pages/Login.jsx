@@ -15,9 +15,11 @@ export default function Login({ onLogin }) {
     try {
       if (role === 'admin') {
         const { data } = await login({ username: identifier, password });
+        if (!data.token || !data.user) throw new Error('Invalid API response');
         onLogin(data.token, data.user);
       } else {
         const { data } = await employeeLogin({ email: identifier, password });
+        if (!data.token || !data.user) throw new Error('Invalid API response');
         onLogin(data.token, data.user);
       }
     } catch (err) {
