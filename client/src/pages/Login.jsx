@@ -23,7 +23,8 @@ export default function Login({ onLogin }) {
         onLogin(data.token, data.user);
       }
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed. Please try again.');
+      const msg = err.response?.data?.error || err.message || 'Login failed. Please try again.';
+      setError(typeof msg === 'object' ? JSON.stringify(msg) : String(msg));
     } finally {
       setLoading(false);
     }

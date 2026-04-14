@@ -4,32 +4,41 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 
-let storagePath = process.env.DB_STORAGE;
-if (!storagePath) {
-  if (process.env.VERCEL) {
-    storagePath = path.join(process.cwd(), 'server', 'database.sqlite');
-  } else {
-    storagePath = path.resolve(__dirname, '../database.sqlite');
-  }
-}
-
-// Automatically handle Vercel read-only filesystem by moving DB to /tmp
+let storagePath;
 if (process.env.VERCEL) {
-  const tmpPath = '/tmp/database.sqlite';
+  // On Vercel, we must use a relative path from the bundled function
+  // or a path that Vercel guarantees.
+  storagePath = path.resolve(process.cwd(), 'server', 'database.sqlite');
+  const tempPath = path.join('/tmp', 'database.sqlite');
+
   try {
-    if (!fs.existsSync(tmpPath) && fs.existsSync(storagePath)) {
-      fs.copyFileSync(storagePath, tmpPath);
+    console.log('Vercel environment detected.');
+    console.log('Source DB path:', storagePath);
+    console.log('Source DB exists:', fs.existsSync(storagePath));
+    
+    if (fs.existsSync(storagePath)) {
+      if (!fs.existsSync(tempPath)) {
+        fs.copyFileSync(storagePath, tempPath);
+        console.log('DB copied to /tmp successfully.');
+      }
+      storagePath = tempPath;
+    } else {
+      console.warn('Source DB file not found! Falling back to /tmp/database.sqlite anyway.');
+      storagePath = tempPath;
     }
   } catch (err) {
-    console.error("Vercel DB Copy Error:", err);
+    console.error('Database migration error:', err);
   }
-  storagePath = tmpPath;
+} else {
+  storagePath = path.join(__dirname, '..', 'database.sqlite');
 }
 
+console.log('Final Database Storage Path:', storagePath);
+
 const sequelize = new Sequelize({
-  dialect: process.env.DB_DIALECT || 'sqlite',
+  dialect: 'sqlite',
   storage: storagePath,
-  logging: false,
+  logging: false, // Set to console.log to see SQL queries
   define: {
     timestamps: true,
     underscored: true,
