@@ -12,22 +12,18 @@
       "src": "server/api/index.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "server/database.sqlite"
+        "includeFiles": ["server/**", "server/database.sqlite"]
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "server/api/index.js"
+      "source": "/api/(.*)",
+      "destination": "server/api/index.js"
     },
     {
-      "src": "/(assets/.*|.*\\.(png|jpg|jpeg|gif|svg|ico|css|js))$",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
