@@ -18,7 +18,6 @@ const reportRoutes = require('./routes/reportRoutes');
 const employeeSelfRoutes = require('./routes/employeeSelfRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -49,27 +48,5 @@ app.use((err, req, res, next) => {
   console.error('Server Error:', err.message);
   res.status(500).json({ error: 'Internal server error', message: err.message });
 });
-
-// Start server
-async function start() {
-  try {
-    await sequelize.authenticate();
-    console.log('Database connected successfully.');
-    await sequelize.sync();
-    console.log('Models synchronized.');
-    if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-      app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}`);
-      });
-    }
-  } catch (error) {
-    console.error('Failed to start server:', error);
-    if (!process.env.VERCEL && process.env.NODE_ENV !== 'production') {
-      process.exit(1);
-    }
-  }
-}
-
-start();
 
 module.exports = app;
