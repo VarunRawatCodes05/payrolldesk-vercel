@@ -23,6 +23,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Diagnostic endpoint
+app.get('/api/health', async (req, res) => {
+  try {
+    const sequelize = require('./config/database');
+    await sequelize.authenticate();
+    res.json({ 
+      status: 'ok', 
+      database: 'connected', 
+      cwd: process.cwd(),
+      env: process.env.VERCEL ? 'vercel' : 'local'
+    });
+  } catch (err) {
+    res.status(500).json({ status: 'error', database: err.message });
+  }
+});
+
 // Setup model associations
 setupAssociations();
 
