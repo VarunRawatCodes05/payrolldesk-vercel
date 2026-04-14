@@ -54,10 +54,13 @@ app.use('/api/payroll', payrollRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/my', employeeSelfRoutes);
 
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Payroll API is running' });
-});
+// Only serve static files locally. Vercel handles this via vercel.json rewrites.
+if (!process.env.VERCEL) {
+  app.use('/assets', express.static(path.join(__dirname, '../client/dist/assets')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+}
 
 // Global error handler
 app.use((err, req, res, next) => {

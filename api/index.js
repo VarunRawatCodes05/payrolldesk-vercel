@@ -1,32 +1,31 @@
 // Force-require the DB driver to ensure Vercel bundles it correctly
 try { require('sqlite3'); } catch (e) { console.error('SQLITE3 missing from bundle'); }
 
-let initialized = false;
+process.env.NODE_ENV = 'production';
 
 module.exports = async (req, res) => {
+  console.log('Function triggered:', req.url);
   try {
-    // Lazy-load internal modules to catch 'require' errors
+    // Basic dependency check
+    const express = require('express');
+    const { Sequelize } = require('sequelize');
+
+    // Load server
     const app = require('../server/server');
     const sequelize = require('../server/config/database');
 
-    if (!initialized) {
-      try {
-        await sequelize.authenticate();
-        await sequelize.sync();
-        initialized = true;
-      } catch (dbErr) {
-        console.error('Initial DB Error:', dbErr);
-      }
-    }
-
+    // Authenticate DB
+    await sequelize.authenticate();
+    
+    // Pass to Express
     return app(req, res);
   } catch (err) {
-    console.error('LAZY_LOAD_CRASH:', err);
+    console.error('SERVERLESS_FATAL:', err);
     res.status(500).json({
-      error: 'BACKEND_LOAD_FAILURE',
+      error: 'SERVERLESS_BOOSTRAP_FAILED',
       message: err.message,
       stack: err.stack,
-      hint: 'This usually means a dependency like sqlite3 failed to load in the cloud environment.'
+      hint: 'Check if sqlite3 is correctly installed for the Linux environment.'
     });
   }
 };

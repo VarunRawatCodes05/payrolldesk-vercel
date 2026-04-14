@@ -5,6 +5,9 @@
   "engines": {
     "node": "18.x"
   },
+  "scripts": {
+    "build": "npm install --platform=linux --arch=x64 sqlite3 && cd client && npm install && npm run build"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
