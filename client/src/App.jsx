@@ -45,7 +45,16 @@ function App() {
   };
 
   const isAuthenticated = !!token;
-  const user = JSON.parse(localStorage.getItem('payroll_admin') || '{}');
+  
+  let user = {};
+  try {
+    const saved = localStorage.getItem('payroll_admin');
+    if (saved && saved !== 'undefined') user = JSON.parse(saved);
+  } catch (e) {
+    console.warn('Session corrupted, clearing...');
+    localStorage.removeItem('payroll_admin');
+  }
+
   const isEmployee = user.role === 'employee';
 
   return (

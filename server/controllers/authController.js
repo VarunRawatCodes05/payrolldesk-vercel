@@ -2,6 +2,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Admin, Employee, Department } = require('../models');
 
+// Fallback for Vercel environments where users forget to set the env var
+const JWT_SECRET = process.env.JWT_SECRET || 'payroll_desk_ultra_secret_2026_pulse';
+
 exports.adminLogin = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -18,7 +21,7 @@ exports.adminLogin = async (req, res) => {
     }
     const token = jwt.sign(
       { id: admin.id, username: admin.username, role: 'admin' },
-      process.env.JWT_SECRET,
+      JWT_SECRET,
       { expiresIn: '8h' }
     );
     res.json({
@@ -55,7 +58,7 @@ exports.employeeLogin = async (req, res) => {
     }
     const token = jwt.sign(
       { id: employee.id, email: employee.email, role: 'employee' },
-      process.env.JWT_SECRET,
+      JWT_SECRET,
       { expiresIn: '8h' }
     );
     res.json({
