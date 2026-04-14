@@ -66,7 +66,7 @@ function App() {
             {n.type === 'success' && '✓ '}
             {n.type === 'error' && '✕ '}
             {n.type === 'info' && 'ℹ '}
-            {n.message}
+            {typeof n.message === 'object' ? JSON.stringify(n.message) : String(n.message)}
           </div>
         ))}
       </div>
